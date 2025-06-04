@@ -27,14 +27,15 @@ const btnMenSort = document.querySelector("[data-filter='male']");
 const btnWomenSort = document.querySelector("[data-filter='female']");
 const btnUniSort = document.querySelector("[data-filter='unisex']");
 const btnResetSort = document.querySelector("#btn-reset")
+const btnBalenciagaSort = document.querySelector("[data-filter='balenciaga']")
 let idHead = 0;
 let idBody = 0;
 let idLegs = 0;
 let idFeet = 0;
 // sort default
 const filter = {
-    filterCurrentSex: 1,
-    filterCurrentBrand: "balenciaga"
+    filterCurrentSex: false,
+    filterCurrentBrand: false
 }
 
 btnHeadRight.addEventListener('click', () => {
@@ -61,23 +62,35 @@ btnLegsLeft.addEventListener('click', () => {
     idLegs--;
     updateImage(idLegs, "legs");
 });
+btnFeetRight.addEventListener('click', () => {
+    idFeet++;
+    updateImage(idFeet, "feet");
+});
+btnFeetLeft.addEventListener('click', () => {
+    idFeet--;
+    updateImage(idFeet, "feet");
+});
 
 //sort listeners
 btnMenSort.addEventListener('click', () => {
     filter.filterCurrentSex = 1;
     updateFilter();
-}) 
+})
 btnWomenSort.addEventListener('click', () => {
     filter.filterCurrentSex = 0;
     updateFilter();
-}) 
+})
 btnUniSort.addEventListener('click', () => {
     filter.filterCurrentSex = 2;
     updateFilter();
-}) 
+})
+btnBalenciagaSort.addEventListener('click', () => {
+    filter.filterCurrentBrand = "balenciaga";
+    updateFilter();
+})
 btnResetSort.addEventListener('click', () => {
     filter.filterCurrentSex = false;
-    filter.filterCurrentSex = false;
+    filter.filterCurrentBrand = false;
     updateFilter();
 })
 
@@ -85,7 +98,7 @@ function updateImage(locate_id, locate) {
     fetchInfo(locate_id, locate)
         .then(filtered => {
             if (filtered.length === 0) {
-                console.log('Нет данных для данного locate и locate_id');
+                // console.log('Нет данных для данного locate и locate_id');
                 return;
             }
 
@@ -135,7 +148,7 @@ function updateImage(locate_id, locate) {
                     img.id = 'img-feet';
                     break;
                 default:
-                    console.error('Неизвестный locate:', locate);
+                    // console.error('Неизвестный locate:', locate);
                     return;
             }
                 container.appendChild(img);
@@ -150,7 +163,7 @@ function updateImage(locate_id, locate) {
             linkPageElem.href = product.LinkPage
             // linkPageElem.target = '_blank'
 
-            console.log(`Обновлено изображение для ${locate} с locate_id ${locate_id}`);
+            // console.log(`Обновлено изображение для ${locate} с locate_id ${locate_id}`);
         })
         .catch(err => {
             console.error('Ошибка при обновлении изображения:', err);
@@ -159,7 +172,7 @@ function updateImage(locate_id, locate) {
 
 
 async function fetchInfo(locate_id, locate) {
-    const response = await fetch('https://dummyjson.com/c/4657-44c0-4dbe-84f6');
+    const response = await fetch('https://dummyjson.com/c/a3e0-25af-48d6-babd');
     if (!response.ok) {
         throw new Error(`Ошибка HTTP: ${response.status}`);
     }
@@ -171,6 +184,10 @@ async function fetchInfo(locate_id, locate) {
     // Фильтр по полу
     if (filter.filterCurrentSex) {
         filtered = filtered.filter(item => item.Sex === filter.filterCurrentSex)
+    }
+    // Фильтр по бренду
+    if (filter.filterCurrentBrand) {
+        filtered = filtered.filter(item => item.Brand === filter.filterCurrentBrand)
     }
     // if (filter.filterCurrentBrand) {
     //     filtered = filtered.filter(item => item.Brand === filter.filterCurrentBrand)
@@ -212,12 +229,12 @@ async function fetchInfo(locate_id, locate) {
                 idFeet = currentId;
                 break;
         }
-        console.log('Обновлен locate_id для', locate, ':', currentId);
+        // console.log('Обновлен locate_id для', locate, ':', currentId);
     }
     
     filtered = [filtered[currentId - 1]]
     // const filtered = filteredByLocate.filter(item => item.locate_id === currentId);
-    console.log(filtered)
+    // console.log(filtered)
     return filtered;
 }
 
