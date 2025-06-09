@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://www.balenciaga.com/favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Shopping_Bag_02"> <path id="Vector" d="M8 8H6.77734C5.47772 8 4.82845 8 4.36621 8.26514C3.96058 8.49781 3.64877 8.86535 3.48595 9.30371C3.30053 9.80294 3.40726 10.4433 3.62065 11.7237L3.62109 11.7261L4.55443 17.3261C4.71276 18.276 4.79244 18.7512 5.02947 19.1077C5.23841 19.4219 5.5317 19.6703 5.87598 19.8247C6.26653 19.9999 6.74787 20 7.71094 20H16.2893C17.2524 20 17.7334 19.9999 18.124 19.8247C18.4682 19.6703 18.7618 19.4219 18.9707 19.1077C19.2077 18.7512 19.287 18.276 19.4453 17.3261L20.3786 11.7261L20.3796 11.7222C20.5928 10.4428 20.6995 9.80274 20.5141 9.30371C20.3513 8.86535 20.0402 8.49781 19.6346 8.26514C19.1724 8 18.522 8 17.2224 8H16M8 8H16M8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8" stroke="#000000" stroke-width="0.24000000000000005" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg> -->
+    <style>
+    </style>
+    <script src="js/popup.js"></script>
+    <header class="header">
+        <div id="sort-container">
+            <button class="sort-button header-elem" title="Sort by attributes" type="button">Сортировать</button>
+            <div class="sort-container__sorter">
+                <h5 class="sort-container__sorter_heading">Сортировать по</h5>
+                <ul class="sort-container__sorter_list">
+                    <li class="sort-container__sorter_list_item">
+                        <button class="sort-container__sorter_btn" title="Sort by sex" type="button">Пол</button>
+                        <ul class="sort-container__sorter_list">
+                            <li class="sort-container__sorter_list_item">
+                                <button class="sort-container__sorter_btn" title="Sort by men" type="button"
+                                    data-filter="male">Мужской</button>
+                            </li>
+                            <li class="sort-container__sorter_list_item">
+                                <button class="sort-container__sorter_btn" title="Sort by women" type="button"
+                                    data-filter="female">Женский</button>
+                            </li>
+                            <li class="sort-container__sorter_list_item">
+                                <button class="sort-container__sorter_btn" title="Sort by unisex" type="button"
+                                    data-filter="unisex">Уни</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sort-container__sorter_list_item">
+                        <button class="sort-container__sorter_btn" title="Sort by brand" type="button">Бренд</button>
+                        <ul class="sort-container__sorter_list">
+                            <li class="sort-container__sorter_list_item">
+                                <button class="sort-container__sorter_btn" title="Sort by Balenca" type="button"
+                                    data-filter="balenciaga">Balenca</button>
+                            </li>
+                            <li class="sort-container__sorter_list_item">
+                                <button class="sort-container__sorter_btn" title="Sort by ..."
+                                    type="button">...</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="sort-container__sorter_btn" title="nosort" type="button" id="btn-reset">Сбросить</button>
+            </div>
+        </div>
+        <a href="cart.html" class="header__cart" title="cart">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <g id="Interface / Shopping_Bag_02">
+                        <path id="Vector"
+                            d="M8 8H6.77734C5.47772 8 4.82845 8 4.36621 8.26514C3.96058 8.49781 3.64877 8.86535 3.48595 9.30371C3.30053 9.80294 3.40726 10.4433 3.62065 11.7237L3.62109 11.7261L4.55443 17.3261C4.71276 18.276 4.79244 18.7512 5.02947 19.1077C5.23841 19.4219 5.5317 19.6703 5.87598 19.8247C6.26653 19.9999 6.74787 20 7.71094 20H16.2893C17.2524 20 17.7334 19.9999 18.124 19.8247C18.4682 19.6703 18.7618 19.4219 18.9707 19.1077C19.2077 18.7512 19.287 18.276 19.4453 17.3261L20.3786 11.7261L20.3796 11.7222C20.5928 10.4428 20.6995 9.80274 20.5141 9.30371C20.3513 8.86535 20.0402 8.49781 19.6346 8.26514C19.1724 8 18.522 8 17.2224 8H16M8 8H16M8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8"
+                            stroke="#000000" stroke-width="0.24000000000000005" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </g>
+                </g>
+            </svg>
+        </a>
+        <a href="mailto:normalnameforemail@gmail.com" class="e-mail header-elem">Почта</a>
+    </header>
+    <main class="main">
+        <div class="content__main">
+            <div class="content__main_locate" data-locate="head">
+                <button class="content__main_locate_locating left" type="button" title="previous">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 34.928365,1002.581 a 4.0003998,4.0003998 0 0 0 1.0313,2.4687 l 21.99994,24 a 4.0003998,4.0003998 0 1 0 5.9062,-5.375 l -19.53114,-21.3125 19.53114,-21.31255 a 4.0003998,4.0003998 0 1 0 -5.9062,-5.375 l -21.99994,24 a 4.0003998,4.0003998 0 0 0 -1.0313,2.90635 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+                <a class="content__main_locate_wrap" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="170px" viewBox="0 0 24 24" fill="none"
+                        stroke="#adadad99" stroke-linecap="round" stroke-linejoin="round"
+                        class="content__main_locate_wrap_svg">
+                        <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" stroke-width="2"></path>
+                        <path d="M22 2 2 22" stroke-width="2"></path>
+                    </svg>
+                    <button class="content__main_locate_wrap_btn-like disabled" type="button" title="like button">
+                        <svg class="like-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </button>
+                </a>
+                <button class="content__main_locate_locating right" type="button" title="next">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 65.071655,1002.1434 a 4.0003998,4.0003998 0 0 0 -1.0313,-2.46873 l -21.99998,-24 a 4.0003998,4.0003998 0 1 0 -5.9062,5.375 l 19.53118,21.31253 -19.53118,21.3125 a 4.0003998,4.0003998 0 1 0 5.9062,5.375 l 21.99998,-24 a 4.0003998,4.0003998 0 0 0 1.0313,-2.9063 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="content__main_locate" data-locate="body">
+                <button class="content__main_locate_locating left" type="button" title="previous">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 34.928365,1002.581 a 4.0003998,4.0003998 0 0 0 1.0313,2.4687 l 21.99994,24 a 4.0003998,4.0003998 0 1 0 5.9062,-5.375 l -19.53114,-21.3125 19.53114,-21.31255 a 4.0003998,4.0003998 0 1 0 -5.9062,-5.375 l -21.99994,24 a 4.0003998,4.0003998 0 0 0 -1.0313,2.90635 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+                <a class="content__main_locate_wrap" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="170px" viewBox="0 0 24 24" fill="none"
+                        stroke="#adadad99" stroke-linecap="round" stroke-linejoin="round"
+                        class="content__main_locate_wrap_svg">
+                        <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" stroke-width="2"></path>
+                        <path d="M22 2 2 22" stroke-width="2"></path>
+                    </svg>
+                    <button class="content__main_locate_wrap_btn-like disabled" type="button" title="like button">
+                        <svg class="like-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </button>
+                </a>
+                <button class="content__main_locate_locating right" type="button" title="next">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 65.071655,1002.1434 a 4.0003998,4.0003998 0 0 0 -1.0313,-2.46873 l -21.99998,-24 a 4.0003998,4.0003998 0 1 0 -5.9062,5.375 l 19.53118,21.31253 -19.53118,21.3125 a 4.0003998,4.0003998 0 1 0 5.9062,5.375 l 21.99998,-24 a 4.0003998,4.0003998 0 0 0 1.0313,-2.9063 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="content__main_locate" data-locate="legs">
+                <button class="content__main_locate_locating left" type="button" title="previous">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 34.928365,1002.581 a 4.0003998,4.0003998 0 0 0 1.0313,2.4687 l 21.99994,24 a 4.0003998,4.0003998 0 1 0 5.9062,-5.375 l -19.53114,-21.3125 19.53114,-21.31255 a 4.0003998,4.0003998 0 1 0 -5.9062,-5.375 l -21.99994,24 a 4.0003998,4.0003998 0 0 0 -1.0313,2.90635 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+                <a class="content__main_locate_wrap" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="170px" viewBox="0 0 24 24" fill="none"
+                        stroke="#adadad99" stroke-linecap="round" stroke-linejoin="round"
+                        class="content__main_locate_wrap_svg">
+                        <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" stroke-width="2"></path>
+                        <path d="M22 2 2 22" stroke-width="2"></path>
+                    </svg>
+                    <button class="content__main_locate_wrap_btn-like disabled" type="button" title="like button">
+                        <svg class="like-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </button>
+                </a>
+                <button class="content__main_locate_locating right" type="button" title="next">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 65.071655,1002.1434 a 4.0003998,4.0003998 0 0 0 -1.0313,-2.46873 l -21.99998,-24 a 4.0003998,4.0003998 0 1 0 -5.9062,5.375 l 19.53118,21.31253 -19.53118,21.3125 a 4.0003998,4.0003998 0 1 0 5.9062,5.375 l 21.99998,-24 a 4.0003998,4.0003998 0 0 0 1.0313,-2.9063 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="content__main_locate" data-locate="feet">
+                <button class="content__main_locate_locating left" type="button" title="previous">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 34.928365,1002.581 a 4.0003998,4.0003998 0 0 0 1.0313,2.4687 l 21.99994,24 a 4.0003998,4.0003998 0 1 0 5.9062,-5.375 l -19.53114,-21.3125 19.53114,-21.31255 a 4.0003998,4.0003998 0 1 0 -5.9062,-5.375 l -21.99994,24 a 4.0003998,4.0003998 0 0 0 -1.0313,2.90635 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+                <a class="content__main_locate_wrap" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="170px" viewBox="0 0 24 24" fill="none"
+                        stroke="#adadad99" stroke-linecap="round" stroke-linejoin="round"
+                        class="content__main_locate_wrap_svg">
+                        <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" stroke-width="2"></path>
+                        <path d="M22 2 2 22" stroke-width="2"></path>
+                    </svg>
+                    <button class="content__main_locate_wrap_btn-like disabled" type="button" title="like button">
+                        <svg class="like-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </button>
+                </a>
+                <button class="content__main_locate_locating right" type="button" title="next">
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px"
+                        viewBox="0 0 100 125">
+                        <g transform="translate(0,-952.36218)">
+                            <path
+                                d="m 65.071655,1002.1434 a 4.0003998,4.0003998 0 0 0 -1.0313,-2.46873 l -21.99998,-24 a 4.0003998,4.0003998 0 1 0 -5.9062,5.375 l 19.53118,21.31253 -19.53118,21.3125 a 4.0003998,4.0003998 0 1 0 5.9062,5.375 l 21.99998,-24 a 4.0003998,4.0003998 0 0 0 1.0313,-2.9063 z"
+                                fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible"
+                                display="inline" overflow="visible" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- <svg class="like-icon" viewBox="0 0 24 24" >
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg> -->
+    </main>
+    <script src="js/script.js"></script>
+    <script src="js/favorite.js"></script>
+    <div class="welcome-popup">
+        <div class="welcome-popup__content">
+            <button class="welcome-popup__close" title="Закрыть" type="button">&times;</button>
+            <!-- <h3>Добро пожаловать!</h3> -->
+            <p>Здесь можно сделать образ</p>
+        </div>
+    </div>
+</body>
+
+</html>
