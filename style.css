@@ -162,13 +162,13 @@
     stroke-width: 1px;
 }
 
-@media (hover: none) {
+@media (hover: none), (pointer: coarse) {
     .content__main_locate_wrap_btn-like {
-        opacity: 1;
+        opacity: 1 !important;
     }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .content__main_locate:hover .content__main_locate_wrap_btn-like {
         opacity: 1;
     }
