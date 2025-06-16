@@ -139,10 +139,9 @@ function updateImage(locate_id, locate) {
                 img = document.createElement('img');
                 img.className = 'content__main_locate_wrap_img';
                 img.alt = '';
-                container.prepend(img); // Добавляем в начало, чтобы кнопка лайка оставалась сверху
+                container.prepend(img);
             }
 
-            // Устанавливаем ID изображения
             switch (locate) {
                 case 'head':
                     img.id = 'img-head';
@@ -170,7 +169,6 @@ function updateImage(locate_id, locate) {
             btnLike.setAttribute('data-locate', product.Locate);
             updateLike(product, btnLike);
 
-            // Обновляем ссылку
             const linkPageElem = container.closest('.content__main_locate_wrap');
             linkPageElem.href = product.LinkPage;
 
@@ -190,21 +188,13 @@ async function fetchInfo(locate_id, locate) {
     const data = await response.json();
 
     let filtered;
-    // Фильтр по положению
     filtered = data.filter(item => item.Locate === locate);
-    // Фильтр по полу
     if (filter.filterCurrentSex) {
         filtered = filtered.filter(item => item.Sex === filter.filterCurrentSex)
     }
-    // Фильтр по бренду
     if (filter.filterCurrentBrand) {
         filtered = filtered.filter(item => item.Brand === filter.filterCurrentBrand)
     }
-    // if (filter.filterCurrentBrand) {
-    //     filtered = filtered.filter(item => item.Brand === filter.filterCurrentBrand)
-    // }
-    // console.log(filter.filterCurrentSex)
-    // console.log(filteredByLocate)
 
     const idMap = {
         head: idHead,

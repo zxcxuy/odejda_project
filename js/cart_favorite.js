@@ -46,7 +46,6 @@ function handleLikeClick(e) {
     updateCardsDisplay();
 }
 
-// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.content__main_locate_wrap_btn-like').forEach(btn => {
         btn.addEventListener('click', handleLikeClick);
